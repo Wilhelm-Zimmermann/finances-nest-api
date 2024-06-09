@@ -10,6 +10,7 @@ import { UserModule } from "./users/user.module";
 import { AuthModule } from "./auth/auth.module";
 import { APP_GUARD } from "@nestjs/core";
 import { JwtAuthGuard } from "./auth/guards/jwt-auth.guard";
+import { BillsModule } from './bills/bills.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { JwtAuthGuard } from "./auth/guards/jwt-auth.guard";
     BillTypeModule,
     UserModule,
     AuthModule,
+    BillsModule,
   ],
   controllers: [],
   providers: [{ provide: APP_GUARD, useClass: JwtAuthGuard }],
