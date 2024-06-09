@@ -7,6 +7,7 @@ import { User } from "./users/models/User";
 import { BillTypeModule } from "./billsType/billType.module";
 import { LogMiddleware } from "./shared/middlewares/LogMiddleware";
 import { UserModule } from "./users/user.module";
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
   imports: [
@@ -14,12 +15,13 @@ import { UserModule } from "./users/user.module";
     TypeOrmModule.forFeature([User, Bill, BillType]),
     BillTypeModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LogMiddleware).forRoutes("billTypes", "users");
+    consumer.apply(LogMiddleware).forRoutes("*");
   }
 }
