@@ -22,4 +22,12 @@ export class UserService {
 
     await this.usersRepository.save(user);
   }
+
+  async getUserByUserName(username: string) {
+    return await this.usersRepository.findOne({
+      where: {
+        username,
+      },
+    });
+  }
 }
